@@ -1,104 +1,64 @@
 
-   /* || HOST FONTS */
-@font-face {
-   font-family: "";
-   font-weight: 400;
-   src: url("./assets/fonts/-regular-webfont.woff2") format("woff2"),
-        url("./assets/fonts/-regular-webfont.woff") format("woff");
-   font-display: swap;
+   /* Container sits off‐canvas to the left */
+.slide-in {
+   position: fixed;
+   top: 0;
+   left: -250px;            /* hide off‑screen */
+   width: 90%;
+   height: 100%;
+   box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+   transition: left 0.3s ease;
+   overflow-y: auto;
+   z-index: 1000;
 }
-
-@font-face {
-   font-family: "";
-   font-weight: 500;
-   src: url("./assets/fonts/-medium-webfont.woff2") format("woff2"),
-        url("./assets/fonts/-medium-webfont.woff") format("woff");
-   font-display: swap;
+ 
+   /* When active, slide in */
+.slide-in.active {
+   left: 0;
 }
-
-@font-face {
-   font-family: "";
-   font-weight: 700;
-   src: url("./assets/fonts/-bold-webfont.woff2") format("woff2"),
-        url("./assets/fonts/-bold-webfont.woff") format("woff");
-   font-display: swap;
-}
-
-
-   /* || RESET */              /* check actual css reset files before going ahead with a project */
-*,
-::before,
-::after {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
-
-html {
-   font-size: 10px;
-   line-height: 1.3;
-}
-
-body {
-   -webkit-font-smoothing: antialiased;
-}
-
-img {
-   display: inline-block;
-   max-width: 100%;
-}
-
-p, h1, h3, input, button {
-   font: inherit;
-   overflow-wrap: break-word;
-}
-
-p {
-   text-wrap: pretty;
-}
-
-h1, h3 {
-   text-wrap: balance;
-}
-
-#root, #__next {
-   isolation: isolate;
-}
-
-
-   /* || CUSTOM PROPERTIES */
-:root {
-   --white: rgb(255, 255, 255);
-   --black: rgb(0, 0, 0);
-   --link-hover-color: rgba(255, 255, 255, 0.75);
-   --primary-gray: rgb(39, 39, 42);
-   --secondary-gray: rgba(109, 109, 121, 0.2);
-   --tertiary-gray: rgba(39, 39, 42, 0.05);
-   --faded-red: rgba(255, 0, 0, 0.25);
-   --faded-green: rgba(0, 255, 0, 0.5);
-   --green: rgb(0, 255, 0);
-   --scrollbar-thumb-color: rgba(0, 0, 0, 0.5);
-}
-
-
-   /* || GENERAL STYLES */
-body {
-   font-family: "", system-ui, serif;
-   font-weight: 400;
-   font-size: 1.6rem;
-   height: 100vh;
-
-   display: grid;
-   grid-template-columns: repeat(9, 1fr);
-   grid-template-areas: 
-      "hd hd hd hd hd hd hd hd hd"
-      "sb sb mn mn mn mn mn mn mn"
-      "ft ft ft ft ft ft ft ft ft";
-   grid-template-rows: 10rem 1fr 5rem;
-}
-
-img {
+ 
+   /* Hamburger/close button container */
+.si-toggle {
+   position: fixed;
+   top: 1rem;
+   left: 1rem;
+   cursor: pointer;
+   z-index: 1001;
    width: 2rem;
    height: 2rem;
-   vertical-align: middle;
 }
+ 
+   /* Simple icon styles (you could swap in SVGs) */
+.si-toggle .bar,
+.si-toggle .bar::before,
+.si-toggle .bar::after {
+   display: block;
+   width: 100%;
+   height: 4px;
+   background: #333;
+   position: absolute;
+   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.si-toggle .bar::before {
+   content: "";
+   top: -8px;
+}
+
+.si-toggle .bar::after  {
+   content: "";
+   top: +8px;
+}
+ 
+   /* Rotate to “X” when active */
+.si-toggle.active .bar {
+   background: transparent;
+}
+
+.si-toggle.active .bar::before {
+   transform: translateY(8px) rotate(45deg);
+}
+.si-toggle.active .bar::after {
+   transform: translateY(-8px) rotate(-45deg);
+}
+ 
