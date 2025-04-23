@@ -1,13 +1,16 @@
 {
-  "name": "repository-template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "slide-in-menu",
+  "version": "3.0.0",
+  "description": "A reusable slide-in dropdown menu",
+  "main": "dist/slide-in.umd.js",
+  "module": "dist/slide-in.esm.js",
+  "files": ["dist"],
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "build:lib": "webpack --config webpack.lib.js"
   },
-  "keywords": [],
+  "keywords": ["dropdown", "menu", "slide-in", "javascript", "component"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
